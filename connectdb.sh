@@ -23,6 +23,7 @@ echo -e "=================="
           export db_name
             ./tablesmenu.sh
         else 
+        clear
             echo -e "\n\t No Such DataBase"
             echo -e "\tTry Again Please  \n"
             connect

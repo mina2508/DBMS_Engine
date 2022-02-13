@@ -1,16 +1,15 @@
 
 source ./createtable.sh
-#source ./drop_table.sh
-#source ./list_table.sh
+source ./droptable.sh
+source ./listtable.sh
 source ./insertdata.sh
 source ./selectdata.sh
-#source ./update_data.sh
-#source ./delete_data.sh
+source ./deletedata.sh
 
 
  
 PS3="Enter your choice : "
-select choice in "Create Table" "List Tables"  "Drop Table" "Insert into Table" "Select From Table" "Delete From Table" "Update Table" "back" 
+select choice in "Create Table" "List Tables"  "Drop Table" "Insert into Table" "Select From Table" "Delete From Table"  "back" 
 do
 case $REPLY in
 1)
@@ -19,11 +18,11 @@ case $REPLY in
 ;;
 2)
  clear
- list_table
+ listtable
 ;;
 3)
  clear
- drop_table
+ droptable
 ;;
 4)
  clear 
@@ -35,12 +34,9 @@ case $REPLY in
 ;;
 6)
  clear 
- delete_data
+ deletedata
 ;;
 7)
-update_data
-;;
-8)
 clear
 ./mainmenue.sh
 ;;

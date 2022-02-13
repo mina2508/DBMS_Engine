@@ -27,11 +27,19 @@ select_column () {
 
                                         num_of_column=`awk -v col=$col_header -F: '{ for (i = 1; i <= NF; ++i) {  if($i == col){print NR; break}   } }' ./databases/$db_name/$table_name/$table_name.metadata `
                                         clear
-                                        echo -e "======================"
-                                        echo -e "=\t $col_header       ="
-                                        echo -e "======================"
-                                         cat -e ./databases/$db_name/$table_name/$table_name.data | grep -wi $display_data | cut  -f$num_of_column -d:
-                                        echo -e "======================"
+                                        counter=0
+				    for arr in `cut -d: -f3 ./databases/$db_name/$table_name/$table_name.metadata`
+				    do
+				    ((counter=$counter+1))
+				    array[$counter]=$arr
+				    done
+				    # echo ${array[@]}
+				    sed -n "s/ /\t/gp" <<<${array[@]}
+				    echo -e "============================"
+            awk -F: -v name="$display_data" -v num="$num_of_column" '{i=1; while (i<num+1){if(i==num){if($i==name) {print $0;}};i++}}' ./databases/firsdb/mina/mina.data | sed -n "s/:/\t/gp"
+
+                                        # cat -e ./databases/$db_name/$table_name/$table_name.data | grep -wi $display_data | sed -n "s/:/ \t/gp"
+                                        echo -e "============================"
                                         echo -e "*==== Do you want Select another record! ====*"
                                         select type in 'Yes' 'No'
                                             do
