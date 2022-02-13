@@ -58,17 +58,15 @@ let counter=1
 
 if [[ $col_number =~ ^[2-9]+$ ]]
 then
-
-
-  while [ $col_number -ge $counter ]
-  do
-
-        if [[ $counter == 1 ]]
+if [[ $counter == 1 ]]
         then
           clear
           pkcolumn 
           ((counter = $counter+1))
         fi
+  while [ $col_number -ge $counter ]
+  do
+   
         read -p "Enter Your Column name  $counter : " col_name
 	if [[  $col_name == $table_name ]] 
 	then
@@ -97,7 +95,7 @@ then
                             ;;
                             esac
                         done
-            
+		 else            	
                 echo -e "\n\t Column Name repeated \n"
                 fi    
                 

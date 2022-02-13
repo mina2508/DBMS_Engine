@@ -1,6 +1,11 @@
 
 source ./createtable.sh
-
+#source ./drop_table.sh
+#source ./list_table.sh
+source ./insertdata.sh
+source ./selectdata.sh
+#source ./update_data.sh
+#source ./delete_data.sh
 
 
  
@@ -26,7 +31,7 @@ case $REPLY in
 ;;
 5) 
  clear
- select_data
+ selectdata
 ;;
 6)
  clear 
