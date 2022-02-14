@@ -10,5 +10,6 @@ echo -e "=================="
 echo -e "=================="
 echo "Press any key to get back to main menu"
 read key
-source ./mainmenue.sh
+clear
+ ./mainmenue.sh
 }

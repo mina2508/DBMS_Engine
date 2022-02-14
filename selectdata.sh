@@ -33,12 +33,12 @@ select_column () {
 				    ((counter=$counter+1))
 				    array[$counter]=$arr
 				    done
-				    # echo ${array[@]}
+
 				    sed -n "s/ /\t/gp" <<<${array[@]}
 				    echo -e "============================"
-            awk -F: -v name="$display_data" -v num="$num_of_column" '{i=1; while (i<num+1){if(i==num){if($i==name) {print $0;}};i++}}' ./databases/firsdb/mina/mina.data | sed -n "s/:/\t/gp"
+      awk -F: -v name="$display_data" -v num="$num_of_column" '{i=1; while (i<num+1){if(i==num){if($i==name) {print $0;}};i++}}' ./databases/$db_name/$table_name/$table_name.data | sed -n "s/:/\t/gp"
 
-                                        # cat -e ./databases/$db_name/$table_name/$table_name.data | grep -wi $display_data | sed -n "s/:/ \t/gp"
+
                                         echo -e "============================"
                                         echo -e "*==== Do you want Select another record! ====*"
                                         select type in 'Yes' 'No'
@@ -101,7 +101,6 @@ then
             ((counter=$counter+1))
             array[$counter]=$arr
             done
-            # echo ${array[@]}
             sed -n "s/ /\t/gp" <<<${array[@]}
             echo -e "===================="
             sed -n "s/:/ \t/gp" ./databases/$db_name/$table_name/$table_name.data
