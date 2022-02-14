@@ -6,7 +6,7 @@ listtable() {
 echo -e "=================="
 echo -e "=   Tables In $db_name   ="
 echo -e "=================="
-    for tb in `ls $PWD/"databases"/$db_name`
+    for tb in `ls $PWD/databases/$db_name`
     do
     echo -e "\t$tb"
     done

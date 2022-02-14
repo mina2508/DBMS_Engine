@@ -15,7 +15,7 @@ select_column () {
                    if [ $check_col_header ]
                    then
 
-                        retrive_number=`awk -F: '{ print $0}' ./databases/$db_name/$table_name/$table_name.metadata | grep $col_header | awk -F: '{ print $1}'`
+                        retrive_number=`grep $col_header ./databases/$db_name/$table_name/$table_name.metadata  | awk -F: '{ print $1}'`
                         if [ $retrive_number ]
                         then
                         echo "Enter one value of any of this columns to display data"
@@ -24,8 +24,6 @@ select_column () {
                                     read display_data
                                     if [ $display_data ]
                                     then
-
-                                        num_of_column=`awk -v col=$col_header -F: '{ for (i = 1; i <= NF; ++i) {  if($i == col){print NR; break}   } }' ./databases/$db_name/$table_name/$table_name.metadata `
                                         clear
                                         counter=0
 				    for arr in `cut -d: -f3 ./databases/$db_name/$table_name/$table_name.metadata`
@@ -36,7 +34,7 @@ select_column () {
 
 				    sed -n "s/ /\t/gp" <<<${array[@]}
 				    echo -e "============================"
-      awk -F: -v name="$display_data" -v num="$num_of_column" '{i=1; while (i<num+1){if(i==num){if($i==name) {print $0;}};i++}}' ./databases/$db_name/$table_name/$table_name.data | sed -n "s/:/\t/gp"
+  awk -F: -v name="$display_data" -v num="$retrive_number" '{i=1; while (i<num+1){if(i==num){if($i==name) {print $0;}};i++}}' ./databases/$db_name/$table_name/$table_name.data | sed -n "s/:/\t/gp"
 
 
                                         echo -e "============================"
@@ -106,7 +104,7 @@ then
             sed -n "s/:/ \t/gp" ./databases/$db_name/$table_name/$table_name.data
             echo -e "==================\n"
             echo "Enter any key to back"
-            read xyz
+            read key
             clear
             break
             ;;   

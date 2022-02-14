@@ -58,7 +58,7 @@ let counter=1
 
 if [[ $col_number =~ ^[2-9]+$ ]]
 then
-if [[ $counter == 1 ]]
+	if [[ $counter == 1 ]]
         then
           clear
           pkcolumn 

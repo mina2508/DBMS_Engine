@@ -11,9 +11,9 @@ echo -e "=================="
 
 }
  droptable () {
-         echo $db_Name
+
  listExistedtable
-         echo $db_Name
+
     read -p "Enter Table Name you need to Delete : " table_Name
     if [ ! "$table_Name" == '' ]
         then

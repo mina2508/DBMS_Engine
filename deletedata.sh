@@ -2,9 +2,9 @@
 ./connectdb.sh
 check_pk () {
 
-reapted_value=`cut -f1 -d: ./databases/$db_name/$table_name/$table_name.data | grep -w $1`
+value=`cut -f1 -d: ./databases/$db_name/$table_name/$table_name.data | grep -w $1`
 
-if [[ $reapted_value == '' ]]
+if [[ $value == '' ]]
 then
    return 1 ;
 else
