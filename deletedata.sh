@@ -46,8 +46,12 @@ then
 	    while [[ true ]]
 	    do
 
-		read -p "Enter pk To Delete Record Using Your Pk $pk : " deleted
-		if [ $deleted ]
+		read -p "Enter pk To Delete Record Using Your Pk Press 1 to Get Back $pk : " deleted
+		if [ $deleted == '1' ]
+		then
+			clear
+			deletedata
+		elif [ $deleted ]
 		then 
 		    if check_pk $deleted; then
 		        sed -i  '/^'$deleted'/d' ./databases/$db_name/$table_name/$table_name.data
