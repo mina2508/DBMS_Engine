@@ -5,10 +5,13 @@ source ./connectdb.sh
 select_column () {
    
   
-            read -p "Enter column Name you want to select  : " col_header
-          
+            read -p "Enter column Name you want to select or Enter 1 to get back  : " col_header
+          if [ $col_header == 1 ]
+          then 
+          clear 
+          selectdata
             
-            if [ $col_header ]
+            elif [ $col_header ]
             then
                    check_col_header=`grep -wi $col_header   ./databases/$db_name/$table_name/$table_name.metadata`
                    total_number_of_columns=`wc -l ./databases/$db_name/$table_name/$table_name.metadata`
@@ -18,11 +21,15 @@ select_column () {
                         retrive_number=`grep $col_header ./databases/$db_name/$table_name/$table_name.metadata  | awk -F: '{ print $1}'`
                         if [ $retrive_number ]
                         then
-                        echo "Enter one value of any of this columns to display data"
+                        echo "Enter one value of any of this columns to display the whole record"
                                 while [[ true ]]
                                 do
                                     read display_data
-                                    if [ $display_data ]
+                                    if [ $display_data == 1 ]
+                                    then
+                                    clear
+                                    select_column
+                                    elif [ $display_data ]
                                     then
                                         clear
                                         counter=0
@@ -78,14 +85,16 @@ select_column () {
 
 selectdata () {
 
-read -p "Enter table name to select  : " table_name
-
-
-if [  -d ./databases/$db_name/$table_name ]  && [ "$table_name" != '' ]
+read -p "Enter table name to select or 1 to get back : " table_name
+if [ $table_name == '1' ]
+then
+clear
+./tablesmenu.sh
+elif [  -d ./databases/$db_name/$table_name ]  && [ "$table_name" != '' ]
 then    
 
     
-     select type in 'Select all table ' 'Select specfic Data'
+     select type in 'Select all table ' 'Select specfic Data' 'Back'
      do 
         case $REPLY in
            
@@ -101,7 +110,7 @@ then
             done
             sed -n "s/ /\t/gp" <<<${array[@]}
             echo -e "===================="
-            sed -n "s/:/ \t/gp" ./databases/$db_name/$table_name/$table_name.data
+            sed -n "s/:/\t/gp" ./databases/$db_name/$table_name/$table_name.data
             echo -e "==================\n"
             echo "Enter any key to back"
             read key
@@ -109,6 +118,10 @@ then
             break
             ;;   
            2)  select_column
+            break 
+            ;;
+           3) clear  
+           selectdata
             break 
             ;;
        

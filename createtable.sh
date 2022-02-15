@@ -119,13 +119,13 @@ fi
 createtable () {
 
     read -p "Enter Your Table Name or 1 to get back : " table_name
-    if [ $table_name == '1' ]
+    if [[ $table_name == '1' ]]
     then
     clear
     ./tablesmenu.sh
-    elif [[ $table_name =~  ^[a-zA-Z]+[a-zA-Z0-9]*$ ]] && [[ ! $table_name == '' ]]
+    elif [[ $table_name =~  ^[a-zA-Z]+[a-zA-Z0-9]*$ ]]
     then
-        if [ ! -d ./databases/$db_name/$table_name ]
+        if [[ ! -d ./databases/$db_name/$table_name ]]
         then
 		if [[  $table_name == $db_name ]] 
 		then
@@ -154,12 +154,18 @@ createtable () {
 		              esac
 		          done
 		./tablesmenu.sh
-		fi	
+		fi
+	
         else 
         echo -e "\n\t*========Table Already Exists========*"
         echo -e "\t*========Please Try again========*\n"
         createtable
         fi
+        elif [ ! $table_name == '' ]
+	then
+		clear
+		echo -e "*\n ====\t enter valid name ====*";
+		createtable
     else
       echo -e "\n*========Invalid Name For Table========*\n"
       createtable
