@@ -118,8 +118,12 @@ fi
 
 createtable () {
 
-    read -p "Enter Your Table Name : " table_name
-    if [[ $table_name =~  ^[a-zA-Z]+[a-zA-Z0-9]*$ ]] && [[ ! $table_name == '' ]]
+    read -p "Enter Your Table Name or 1 to get back : " table_name
+    if [ $table_name == '1' ]
+    then
+    clear
+    ./tablesmenu.sh
+    elif [[ $table_name =~  ^[a-zA-Z]+[a-zA-Z0-9]*$ ]] && [[ ! $table_name == '' ]]
     then
         if [ ! -d ./databases/$db_name/$table_name ]
         then

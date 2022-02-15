@@ -1,8 +1,13 @@
 source ./connectdb.sh
  dropdb () {
 listdb
-    read -p "Enter DataBase Name you need to Delete : " db_Name
-    if [ ! "$db_Name" == '' ]
+    read -p "Enter DataBase Name you need to Delete or 1 to get back : " db_Name
+    
+    if [ $db_Name == '1' ]
+    	then 
+    	    clear
+    	./mainmenue.sh
+    elif [ ! "$db_Name" == '' ]
         then
 		 if [ -d ./databases/$db_Name ]
 		then
@@ -12,11 +17,13 @@ listdb
 		    clear
 		    
 		else
+		clear
 		    echo -e "\n\t No Such Name For DataBase "
 		    echo -e "\t Please enter The Correct Name  \n"  
 		dropdb
 		fi
         else
+        clear
         echo -e "\n\t Please enter valid data \n"
         dropdb
         fi    

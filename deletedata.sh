@@ -30,39 +30,48 @@ listtabledata (){
 
 
 deletedata (){
-read -p "Delete Data From : " table_name
+read -p "Enter Table Name To Delete from or Press 1 to Get Back  : " table_name
+
 if [ $table_name ]
 then
-if [  -d ./databases/$db_name/$table_name ]
-then
+	if [ $table_name == '1' ]
+	then
+	clear
+	./tablesmenu.sh
+	elif [  -d ./databases/$db_name/$table_name ]
+	then
 
-    pk=`grep -wi pk ./databases/$db_name/$table_name/$table_name.metadata | cut -f3 -d: `
-        listtabledata $table_name
-    while [[ true ]]
-    do
+	    pk=`grep -wi pk ./databases/$db_name/$table_name/$table_name.metadata | cut -f3 -d: `
+		listtabledata $table_name
+	    while [[ true ]]
+	    do
 
-        read -p "Enter pk To Delete Record Using Your Pk $pk : " deleted
-        if [ $deleted ]
-        then 
-            if check_pk $deleted; then
-                sed -i  '/^'$deleted'/d' ./databases/$db_name/$table_name/$table_name.data
-                clear
-                echo -e "\n\t Record Deleted Sucssefully\n" 
-                break 
-            else
-            echo -e "\n\t PK not found"
-            continue
-            fi 
-            
-        else
-        echo -e "\n\t please enter pk"
-        continue
-        fi
-    done
-else 
-    echo -e "\n\t No Such Table "
-    echo -e "\n\t Please Try again "
-fi
+		read -p "Enter pk To Delete Record Using Your Pk $pk : " deleted
+		if [ $deleted ]
+		then 
+		    if check_pk $deleted; then
+		        sed -i  '/^'$deleted'/d' ./databases/$db_name/$table_name/$table_name.data
+		        clear
+		        echo -e "\n\t Record Deleted Sucssefully\n" 
+		        break 
+		    else
+		    echo -e "\n\t PK not found"
+		    continue
+		    fi 
+		    
+		else
+		echo -e "\n\t please enter pk"
+		continue
+		fi
+		
+	    done
+	
+	else 
+	clear
+	    echo -e "\n\t No Such Table "
+	    echo -e "\n\t Please Try again "
+	    deletedata
+	fi
 else
 echo -e "\n\t enter valid data "
 fi

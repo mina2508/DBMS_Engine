@@ -14,8 +14,12 @@ echo -e "=================="
 
  connect () {
  listdb
-    read -p "Please Enter DB Name You Need To Connect : " db_name
-        if [ -d ./databases/$db_name ] && [ "$db_name" != '' ]
+    read -p "Please Enter DB Name You Need To Connect or 1 to get back : " db_name
+    	if [ $db_name == '1' ]
+    	then 
+    		clear
+    		./mainmenue.sh
+        elif [ -d ./databases/$db_name ] && [ "$db_name" != '' ]
         then 
         clear
           

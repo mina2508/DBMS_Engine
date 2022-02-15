@@ -108,10 +108,13 @@ read_col_data () {
 
 
 insert () {
-echo "*==== Enter Table Name ====*"
+echo "*==== Enter Table Name or 1 To Get Back ====*"
 read table_name
-
-if [ -d ./databases/$db_name/$table_name ] && [ "$table_name" != '' ]
+  if [ $table_name == '1' ]
+    then
+    clear
+    ./tablesmenu.sh
+elif [ -d ./databases/$db_name/$table_name ] && [ "$table_name" != '' ]
 then
 echo -e " \n \n \t*====inserting into table $table_name inside DataBas $db_name ====* \n \n"
 	read_meta_data

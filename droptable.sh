@@ -14,8 +14,12 @@ echo -e "=================="
 
  listExistedtable
 
-    read -p "Enter Table Name you need to Delete : " table_Name
-    if [ ! "$table_Name" == '' ]
+    read -p "Enter Table Name you need to Delete or 1 to get back : " table_Name
+    if [ $table_Name == '1' ]
+    then
+    clear
+    ./tablesmenu.sh
+    elif [ ! "$table_Name" == '' ]
         then
 
 		 if [ -d ./databases/$db_name/$table_Name  ]
@@ -30,7 +34,7 @@ echo -e "=================="
 		    echo -e "\t Please enter The Correct Name  \n"  
 		droptable
 		fi
-        else
+    else
         echo -e "\n\t Please enter valid data \n"
         dropdb
         fi    
