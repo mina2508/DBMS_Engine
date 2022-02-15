@@ -2,14 +2,24 @@
 
 listdb(){
 
+if [ -d $PWD/"databases" ]
+then
 echo -e "=================="
-	echo -e " =  Existed DataBases  ="
-	echo -e " =================="
+echo -e "=   Existed DataBases    ="
+echo -e "=================="
     for db in `ls $PWD/"databases"`
     do
-    echo -e "\t $db "
+    echo -e "\t$db"
     done
-    echo -e " ================== \n"
+echo -e "=================="
+else
+echo -e "============================"
+echo -e "=    Existed DataBases    ="
+echo -e "============================"
+echo -e "=   No DataBases to be connect    ="
+echo -e "============================"
+
+fi
 }
 
  connect () {
