@@ -113,7 +113,7 @@ read table_name
   if [ $table_name == '1' ]
     then
     clear
-    ./tablesmenu.sh
+   source ./tablesmenu.sh
 elif [ -d ./databases/$db_name/$table_name ] && [ "$table_name" != '' ]
 then
 echo -e " \n \n \t*====inserting into table $table_name inside DataBas $db_name ====* \n \n"
@@ -147,7 +147,7 @@ else
 	echo -e "\t press any key to back..."	
 	read key
 	clear
-	 ./tablesmenu.sh
+	source ./tablesmenu.sh
 fi
-	 ./tablesmenu.sh
+	source ./tablesmenu.sh
 }

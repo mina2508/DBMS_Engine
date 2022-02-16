@@ -28,14 +28,14 @@ fi
     	if [ $db_name == '1' ]
     	then 
     		clear
-    		./mainmenue.sh
+    		source	./mainmenue.sh
         elif [ -d ./databases/$db_name ] && [ "$db_name" != '' ]
         then 
         clear
           
             echo -e "\n\t*========= Connected To $db_name  ============*\n"
           export db_name
-            ./tablesmenu.sh
+          source  ./tablesmenu.sh
         else 
         clear
             echo -e "\n\t No Such DataBase"

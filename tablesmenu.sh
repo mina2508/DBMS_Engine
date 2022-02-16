@@ -38,7 +38,7 @@ case $REPLY in
 ;;
 7)
 clear
-./mainmenue.sh
+source ./mainmenue.sh
 ;;
 *) echo $REPLY "is not one of the choices."
 ;;

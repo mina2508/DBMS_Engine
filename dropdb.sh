@@ -6,7 +6,7 @@ listdb
     if [ $db_Name == '1' ]
     	then 
     	    clear
-    	./mainmenue.sh
+    source	./mainmenue.sh
     elif [ ! "$db_Name" == '' ]
         then
 		 if [ -d ./databases/$db_Name ]
@@ -36,7 +36,7 @@ case $REPLY in
     1) dropdb
     ;;
     2) clear 
-    ./mainmenue.sh
+   source ./mainmenue.sh
     ;;
     *) echo " $REPLY is Not One Of the choices"  
     ;;

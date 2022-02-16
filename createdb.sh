@@ -13,7 +13,7 @@ do
     	if [ "$dbName" == '1' ]
     	then
     		clear
-    	   ./mainmenue.sh
+    	  source ./mainmenue.sh
         elif [ "$dbName" == '' ]
         then
         	clear
@@ -53,7 +53,7 @@ echo  "*=========Do You Need To Create More DataBases==========*"
             ;;   
             
            2) clear
-            ./mainmenue.sh
+           source ./mainmenue.sh
             ;;
        
     esac

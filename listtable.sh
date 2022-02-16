@@ -11,7 +11,8 @@ echo -e "=================="
     echo -e "\t$tb"
     done
 echo -e "=================="
-echo "Press any key to get back to main menu"
+echo "Press any Enter to get back to main menu"
 read key
+clear
 source ./tablesmenu.sh
 }

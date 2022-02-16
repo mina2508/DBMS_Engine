@@ -37,7 +37,7 @@ then
 	if [ $table_name == '1' ]
 	then
 	clear
-	./tablesmenu.sh
+	source	./tablesmenu.sh
 	elif [  -d ./databases/$db_name/$table_name ]
 	then
 
@@ -95,5 +95,5 @@ do
     esac
 done
 clear
-./tablesmenu.sh
+source ./tablesmenu.sh
 }

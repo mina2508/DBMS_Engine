@@ -53,7 +53,7 @@ select_column () {
                                                     selectdata
                                                     ;;
                                                     2)clear
-                                                    ./tablesmenu.sh 
+                                                    source ./tablesmenu.sh 
                                                     ;; 
                                                     *) echo "$REPLY is not one of the choices";
                                                     ;;
@@ -76,7 +76,7 @@ select_column () {
             echo -e "\n*=========column name not found enter valid data =========*\n"
             select_column
             fi
-    # done
+
 
 }
 
@@ -89,7 +89,7 @@ read -p "Enter table name to select or 1 to get back : " table_name
 if [ $table_name == '1' ]
 then
 clear
-./tablesmenu.sh
+source ./tablesmenu.sh
 elif [  -d ./databases/$db_name/$table_name ]  && [ "$table_name" != '' ]
 then    
 
@@ -135,7 +135,7 @@ echo -e "*=====Please Try again======* "
 selectdata
 fi
 
- ./tablesmenu.sh
+source ./tablesmenu.sh
 }
 
 

@@ -122,7 +122,7 @@ createtable () {
     if [[ $table_name == '1' ]]
     then
     clear
-    ./tablesmenu.sh
+   source ./tablesmenu.sh
     elif [[ $table_name =~  ^[a-zA-Z]+[a-zA-Z0-9]*$ ]]
     then
         if [[ ! -d ./databases/$db_name/$table_name ]]
@@ -153,7 +153,7 @@ createtable () {
 		                  
 		              esac
 		          done
-		./tablesmenu.sh
+		source ./tablesmenu.sh
 		fi
 	
         else 

@@ -15,8 +15,8 @@ echo -e "============================"
 echo -e "=   No Existed DataBases    ="
 echo -e "============================"
 fi
-echo "Press any key to get back to main menu"
+echo "Press any Enter to get back to main menu"
 read key
 clear
- ./mainmenue.sh
+source  ./mainmenue.sh
 }

@@ -47,7 +47,7 @@ case $REPLY in
     1) droptable
     ;;
     2) clear 
-    ./tablesmenu.sh
+  source  ./tablesmenu.sh
     ;;
     *) echo " $REPLY is Not One Of the choices"  
     ;;
